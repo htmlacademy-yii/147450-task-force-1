@@ -1,7 +1,7 @@
 # Личный проект «TaskForce»
 
-* Студент: [Petras Blaževičius](https://up.htmlacademy.ru/yii/1/user/147450).
-* Наставник: `Неизвестно`.
+- Студент: [Petras Blaževičius](https://up.htmlacademy.ru/yii/1/user/147450).
+- Наставник: [Dmitriy Kulikov](https://htmlacademy.ru/profile/id1725331).
 
 ---
 
