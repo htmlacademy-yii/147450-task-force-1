@@ -13,7 +13,7 @@ namespace taskforce;
 */
 
 class Task
-{следуя пункту
+{
 
     /*
     класс имеет методы для возврата «карты» статусов и действий.
@@ -36,7 +36,7 @@ class Task
         self::STATUS_CANCELED => 'Отменено', // canceled => Отменено
         self::STATUS_COMPLETED => 'Выполнено', // completed => Выполнено
         self::STATUS_FAILED => 'Провалено' // failed => Провалено
-]
+];
 
     // ACTIONS
 
