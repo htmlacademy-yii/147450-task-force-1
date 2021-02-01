@@ -13,54 +13,50 @@ namespace taskforce;
 */
 
 class Task
-{
+{следуя пункту
+
+    /*
+    класс имеет методы для возврата «карты» статусов и действий.
+   Карта — это ассоциативный массив, где ключ — внутреннее имя,
+   а значение — названия статуса/действия на русском.
+   */
     // STATUSES
 
-    const STATUS_NEW = 'new'; // Новые
-    const STATUS_ACTIVE = 'active'; // Активные
-    const STATUS_CANCELED = 'canceled'; // Отменённые
-    const STATUS_COMPLETED = 'completed'; // Завершённые
-    const STATUS_OVERDUE = 'overdue'; // Просроченные
+    const STATUS_NEW = 'new'; // Новое
+    const STATUS_CANCELED = 'canceled'; // Отменено
+    const STATUS_WORKING = 'working'; // В работе
+    const STATUS_COMPLETED = 'completed'; // Выполнено
+    const STATUS_FAILED = 'failed'; // Провалено
 
+    // MAP STATUSES
+
+    public $mapStatus = [
+        self::STATUS_NEW => 'Новое', // new => Новое
+        self::STATUS_WORKING => 'В работе', // working => В работе
+        self::STATUS_CANCELED => 'Отменено', // canceled => Отменено
+        self::STATUS_COMPLETED => 'Выполнено', // completed => Выполнено
+        self::STATUS_FAILED => 'Провалено' // failed => Провалено
+]
 
     // ACTIONS
 
     // Исполнитель
     const ACTION_AGENT_RESPONSE = 'response'; // Откликнуться
-    const ACTION_AGENT_REFUSE = 'refuse'; // Отказаться
-    const ACTION_AGENT_PROBLEM = 'problem'; // Возникли проблемы
-    const ACTION_AGENT_COMPLETE = 'complete'; // Завершить
+    const ACTION_AGENT_REJECT = 'reject'; // Отказаться
     // Заказчик
-    const ACTION_CUSTOMER_CONFIRM = 'confirm'; // Подтвердить
-    const ACTION_CUSTOMER_DENY = 'deny'; // Отказать (refuse????)
+    const ACTION_CUSTOMER_COMPLETED = 'completed'; // Выполнено
+    const ACTION_CUSTOMER_CANCEL = 'cancel'; // Отменить
 
-    /*
-     класс имеет методы для возврата «карты» статусов и действий.
-    Карта — это ассоциативный массив, где ключ — внутреннее имя,
-    а значение — названия статуса/действия на русском.
-    */
-
-    // MAP STATUSES
-
-    public $mapStatus = [
-        self::STATUS_NEW => 'Новые', // new => Новые
-        self::STATUS_ACTIVE => 'Активные', // active => Активные
-        self::STATUS_CANCELED => 'Отменённые', // canceled => Отменённые
-        self::STATUS_COMPLETED => 'Завершённые', // completed => Завершённые
-        self::STATUS_OVERDUE => 'Просроченные' // overdue => Просроченные
-    ];
 
     // MAP ACTIONS
 
     public $mapAction = [
         //  действия исполнителя
         self::ACTION_AGENT_RESPONSE => 'Откликнуться', // response => Откликнуться
-        self::ACTION_AGENT_REFUSE => 'Отказаться', // refuse => Отказаться
-        self::ACTION_AGENT_PROBLEM => 'Возникли проблемы', // problem => Возникли проблемы
-        self::ACTION_AGENT_COMPLETE => 'Завершить ', // complete => Завершить
+        self::ACTION_AGENT_REJECT => 'Отказаться', // reject => Отказаться
         // действия заказчика
-        self::ACTION_CUSTOMER_CONFIRM => 'Подтвердить', // confirm => Подтвердить
-        self::ACTION_CUSTOMER_DENY => 'Отказать' // deny => Отказать (refuse????)
+        self::ACTION_CUSTOMER_COMPLETED => 'Выполнено', // completed => Выполнено
+        self::ACTION_CUSTOMER_CANCEL => 'Отменить ' // cancel => Отменить
     ];
 
     /*
