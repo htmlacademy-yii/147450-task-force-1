@@ -1,7 +1,7 @@
 <?php
 
 
-namespace taskforce;
+namespace TaskForce;
 /*
  Детали реализации класса
  в виде констант в классе должны быть перечислены все возможные действия и статусы.
@@ -44,7 +44,7 @@ class Task
     const ACTION_AGENT_RESPONSE = 'response'; // Откликнуться
     const ACTION_AGENT_REJECT = 'reject'; // Отказаться
     // Заказчик
-    const ACTION_CUSTOMER_COMPLETED = 'completed'; // Выполнено
+    const ACTION_CUSTOMER_DONE = 'done'; // Выполнено
     const ACTION_CUSTOMER_CANCEL = 'cancel'; // Отменить
 
 
@@ -55,8 +55,8 @@ class Task
         self::ACTION_AGENT_RESPONSE => 'Откликнуться', // response => Откликнуться
         self::ACTION_AGENT_REJECT => 'Отказаться', // reject => Отказаться
         // действия заказчика
-        self::ACTION_CUSTOMER_COMPLETED => 'Выполнено', // completed => Выполнено
-        self::ACTION_CUSTOMER_CANCEL => 'Отменить ' // cancel => Отменить
+        self::ACTION_CUSTOMER_DONE => 'Выполнено', // done => Выполнено
+        self::ACTION_CUSTOMER_CANCEL => 'Отменить' // cancel => Отменить
     ];
 
     /*

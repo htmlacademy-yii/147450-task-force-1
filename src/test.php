@@ -1,8 +1,9 @@
 <?php
+namespace TaskForce;
 
-use taskforce\Task;
+use TaskForce\Task;
 
-require_once 'Task.php';
+
 
 $agentId = 1;
 $customerId = 2;
