@@ -15,7 +15,6 @@ namespace taskforce;
 class Task
 {
     // STATUSES
-    //----------------------------------------------
 
     const STATUS_NEW = 'new'; // Новые
     const STATUS_ACTIVE = 'active'; // Активные
@@ -25,7 +24,6 @@ class Task
 
 
     // ACTIONS
-    //----------------------------------------------
 
     // Исполнитель
     const ACTION_AGENT_RESPONSE = 'response'; // Откликнуться
