@@ -4,7 +4,9 @@ use taskforce\Task;
 
 require_once 'Task.php';
 
-$task = new Task();
+$agentId = 1;
+$customerId = 2;
+$task = new Task($agentId, $customerId);
 
 //Для проверки класса, вам понадобится написать тестовый сценарий, который:
 //
