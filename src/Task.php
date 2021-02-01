@@ -86,7 +86,7 @@ class Task
      класс имеет метод для получения статуса,
     в которой он перейдёт после выполнения указанного действия
      */
-    public function getMapStatus($currentAction) {
+    public function getStatus($currentAction) {
         //
     }
 
@@ -94,7 +94,7 @@ class Task
  класс имеет метод для получения доступных
     действий для указанного статуса
     */
-    public function getMapAction($currentStatus) {
+    public function getAction($currentStatus) {
         //
     }
 }
