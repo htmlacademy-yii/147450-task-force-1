@@ -52,7 +52,7 @@ class Task
         self::STATUS_OVERDUE => 'Просроченные' // overdue => Просроченные
     ];
 
-    // MAP STATUSES
+    // MAP ACTIONS
 
     public $mapAction = [
         //  действия исполнителя
