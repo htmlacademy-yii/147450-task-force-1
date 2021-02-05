@@ -25,7 +25,7 @@ class TaskState
     private const STATUS_NEW = 'new'; // Новое
     private const STATUS_CANCELED = 'canceled'; // Отменено
     //минорно, но обычно in_progress обозначают
-    private const STATUS_IN_PROGRESS = 'in_progress'; // В работе
+    public const STATUS_IN_PROGRESS = 'in_progress'; // В работе
     private const STATUS_COMPLETED = 'completed'; // Выполнено
     private const STATUS_FAILED = 'failed'; // Провалено
 

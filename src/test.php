@@ -15,3 +15,4 @@ $task = new TaskState($currentState, $agentId, $customerId);
 //Посоветуйтесь с наставником на тему правильного тестирования класса. Например, можно использовать ассерты:
 //
 //assert($strategy->getNextStatus('action_cancel') == Task::STATUS_CANCEL, 'cancel action');
+assert($task->getStatus('response') == TaskState::STATUS_IN_PROGRESS, 'В работе');
