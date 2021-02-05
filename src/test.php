@@ -1,13 +1,12 @@
 <?php
-namespace TaskForce;
 
-use TaskForce\Task;
-
-
+use TaskForce\TaskState;
 
 $agentId = 1;
 $customerId = 2;
-$task = new Task($agentId, $customerId);
+$currentState = 'in_progress';
+
+$task = new TaskState($currentState, $agentId, $customerId);
 
 //Для проверки класса, вам понадобится написать тестовый сценарий, который:
 //
@@ -16,6 +15,3 @@ $task = new Task($agentId, $customerId);
 //Посоветуйтесь с наставником на тему правильного тестирования класса. Например, можно использовать ассерты:
 //
 //assert($strategy->getNextStatus('action_cancel') == Task::STATUS_CANCEL, 'cancel action');
-
-
-
