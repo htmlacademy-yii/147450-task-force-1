@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TaskForce;
+namespace App;
 /*
  Детали реализации класса
  в виде констант в классе должны быть перечислены все возможные действия и статусы.
@@ -32,6 +32,9 @@ class TaskState
     // MAP STATUSES
     // класс имеет методы для возврата «карты» статусов и действий
 
+    /**
+     * @return string[]
+     */
     private function mapStatusToTitle(): array
     {
 
@@ -56,6 +59,10 @@ class TaskState
 
 // MAP ACTIONS
 // класс имеет методы для возврата «карты» статусов и действий
+
+    /**
+     * @return string[]
+     */
     private function mapActionToTitle(): array
     {
         return [
@@ -88,24 +95,52 @@ class TaskState
     }
 
 // возвращать имя статуса, в который перейдёт задание после выполнения конкретного действия.
+
+
+    /**
+     * @param string $action
+     * @return string
+     */
     public function getStatus(string $action): string
     {
-        return $this->currentStatus = match ($action) {
-            self::ACTION_AGENT_RESPONSE => self::STATUS_IN_PROGRESS,
-            self::ACTION_AGENT_REJECT => self::STATUS_FAILED,
-            self::ACTION_CUSTOMER_CANCEL => self::STATUS_CANCELED,
-            self::ACTION_CUSTOMER_DONE => self::STATUS_COMPLETED
-        };
+        /* return match ($action) {
+             self::ACTION_AGENT_RESPONSE => self::STATUS_IN_PROGRESS,
+             self::ACTION_AGENT_REJECT => self::STATUS_FAILED,
+             self::ACTION_CUSTOMER_CANCEL => self::STATUS_CANCELED,
+             self::ACTION_CUSTOMER_DONE => self::STATUS_COMPLETED
+         };*/
+        switch ($action) {
+            case self::ACTION_AGENT_RESPONSE:
+                return self::STATUS_IN_PROGRESS;
+            case self::ACTION_AGENT_REJECT:
+                return  self::STATUS_FAILED;
+            case self::ACTION_CUSTOMER_CANCEL:
+                return  self::STATUS_CANCELED;
+            case self::ACTION_CUSTOMER_DONE:
+                return  self::STATUS_COMPLETED;
+        }
     }
 
 
     // определять список доступных действий в текущем статусе
+
+    /**
+     * @param string $status
+     * @return string[]
+     */
     public function getAction(string $status): array
     {
-        return match ($status) {
+        /*return match ($status) {
             self::STATUS_NEW => [self::ACTION_AGENT_RESPONSE, self::ACTION_CUSTOMER_CANCEL],
             self::STATUS_IN_PROGRESS => [self::ACTION_AGENT_REJECT, self::ACTION_CUSTOMER_DONE]
-        };
+        };*/
+
+        switch ($status) {
+            case self::STATUS_NEW:
+                return [self::ACTION_AGENT_RESPONSE, self::ACTION_CUSTOMER_CANCEL];
+            case self::STATUS_IN_PROGRESS:
+                return [self::ACTION_AGENT_REJECT, self::ACTION_CUSTOMER_DONE];
+        }
     }
 
 }
