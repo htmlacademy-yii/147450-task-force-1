@@ -12,6 +12,8 @@ namespace App;
 */
 
 //это не совсем Task, это скорее TaskState, примерно как это https://refactoring.guru/ru/design-patterns/state
+use Exception;
+
 class TaskState
 {
 
@@ -87,6 +89,12 @@ class TaskState
 
 
 // Эти значения класс получает в своём конструкторе.
+    /**
+     * TaskState constructor.
+     * @param string $currentStatus
+     * @param int $agentId
+     * @param int $customerId
+     */
     public function __construct(string $currentStatus, int $agentId, int $customerId)
     {
         $this->agentId = $agentId;
@@ -100,6 +108,7 @@ class TaskState
     /**
      * @param string $action
      * @return string
+     * @throws Exception
      */
     public function getStatus(string $action): string
     {
@@ -118,6 +127,8 @@ class TaskState
                 return  self::STATUS_CANCELED;
             case self::ACTION_CUSTOMER_DONE:
                 return  self::STATUS_COMPLETED;
+            default:
+                throw new Exception('Unexpected action value');
         }
     }
 
@@ -127,6 +138,7 @@ class TaskState
     /**
      * @param string $status
      * @return string[]
+     * @throws Exception
      */
     public function getAction(string $status): array
     {
@@ -140,6 +152,8 @@ class TaskState
                 return [self::ACTION_AGENT_RESPONSE, self::ACTION_CUSTOMER_CANCEL];
             case self::STATUS_IN_PROGRESS:
                 return [self::ACTION_AGENT_REJECT, self::ACTION_CUSTOMER_DONE];
+            default:
+                throw new Exception('Unexpected status value');
         }
     }
 
