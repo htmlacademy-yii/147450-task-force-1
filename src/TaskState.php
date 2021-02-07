@@ -112,13 +112,14 @@ class TaskState
      */
     public function getStatus(string $action): string
     {
-        /* return match ($action) {
+         return match ($action) {
              self::ACTION_AGENT_RESPONSE => self::STATUS_IN_PROGRESS,
              self::ACTION_AGENT_REJECT => self::STATUS_FAILED,
              self::ACTION_CUSTOMER_CANCEL => self::STATUS_CANCELED,
-             self::ACTION_CUSTOMER_DONE => self::STATUS_COMPLETED
-         };*/
-        switch ($action) {
+             self::ACTION_CUSTOMER_DONE => self::STATUS_COMPLETED,
+             default => throw new Exception('Unexpected action value')
+         };
+        /*switch ($action) {
             case self::ACTION_AGENT_RESPONSE:
                 return self::STATUS_IN_PROGRESS;
             case self::ACTION_AGENT_REJECT:
@@ -129,7 +130,7 @@ class TaskState
                 return  self::STATUS_COMPLETED;
             default:
                 throw new Exception('Unexpected action value');
-        }
+        }*/
     }
 
 
@@ -142,19 +143,20 @@ class TaskState
      */
     public function getAction(string $status): array
     {
-        /*return match ($status) {
+        return match ($status) {
             self::STATUS_NEW => [self::ACTION_AGENT_RESPONSE, self::ACTION_CUSTOMER_CANCEL],
-            self::STATUS_IN_PROGRESS => [self::ACTION_AGENT_REJECT, self::ACTION_CUSTOMER_DONE]
-        };*/
+            self::STATUS_IN_PROGRESS => [self::ACTION_AGENT_REJECT, self::ACTION_CUSTOMER_DONE],
+            default => throw new Exception('Unexpected status value'),
+        };
 
-        switch ($status) {
+        /*switch ($status) {
             case self::STATUS_NEW:
                 return [self::ACTION_AGENT_RESPONSE, self::ACTION_CUSTOMER_CANCEL];
             case self::STATUS_IN_PROGRESS:
                 return [self::ACTION_AGENT_REJECT, self::ACTION_CUSTOMER_DONE];
             default:
                 throw new Exception('Unexpected status value');
-        }
+        }*/
     }
 
 }
