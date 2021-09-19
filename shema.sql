@@ -10,20 +10,20 @@ CREATE TABLE users
 DROP TABLE IF EXISTS profiles;
 CREATE TABLE profiles
 (
-  profile_id       INT PRIMARY KEY AUTO_INCREMENT,
-  user_avatar      VARCHAR(256),
-  user_address     VARCHAR(256),
-  user_description VARCHAR(256),
-  user_birthdate   DATE,
-  user_works_photo VARCHAR(256),
-  user_phone       VARCHAR(256) UNIQUE,
-  user_skype       VARCHAR(256) UNIQUE,
-  user_telegram    VARCHAR(256) UNIQUE,
-  notification_new_message BOOL,
-  notification_user_action BOOL,
-  notification_new_review BOOL,
-  notification_show_contact BOOL,
-  notification_show_profile BOOL,
+  profile_id                 INT PRIMARY KEY AUTO_INCREMENT,
+  user_avatar                VARCHAR(256),
+  user_address               VARCHAR(256),
+  user_description           VARCHAR(256),
+  user_birthdate             DATE,
+  user_works_photo           VARCHAR(256),
+  user_phone                 VARCHAR(256) UNIQUE,
+  user_skype                 VARCHAR(256) UNIQUE,
+  user_telegram              VARCHAR(256) UNIQUE,
+  notification_new_message   BOOL,
+  notification_user_action   BOOL,
+  notification_new_review    BOOL,
+  customization_show_contact BOOL,
+  customization_show_profile BOOL,
   FOREIGN KEY (profile_id) REFERENCES users (user_id)
 );
 
