@@ -82,5 +82,6 @@ CREATE TABLE messages
   FOREIGN KEY (message_task_id) REFERENCES tasks (task_id)
 );
 
+
 ALTER TABLE tasks
 ADD FOREIGN KEY (task_message_id) REFERENCES messages(message_id);
