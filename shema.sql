@@ -15,7 +15,7 @@ CREATE TABLE profiles
   user_address               VARCHAR(256),
   user_description           VARCHAR(256),
   user_birthdate             DATE,
-  user_categories            INT,
+  user_categories_id         INT,
   user_works_photo           VARCHAR(256),
   user_phone                 VARCHAR(256) UNIQUE,
   user_skype                 VARCHAR(256) UNIQUE,
@@ -32,16 +32,39 @@ DROP TABLE IF EXISTS orders_categories;
 CREATE TABLE orders_categories
 (
   category_id    INT AUTO_INCREMENT PRIMARY KEY,
-  category_icon  VARCHAR(128),
-  category_name  VARCHAR(128) UNIQUE,
-  category_alias VARCHAR(128) UNIQUE
+  category_icon  VARCHAR(256),
+  category_name  VARCHAR(256) UNIQUE,
+  category_alias VARCHAR(256) UNIQUE
 );
 
 DROP TABLE IF EXISTS cities;
 CREATE TABLE cities
 (
   city_id        INT AUTO_INCREMENT PRIMARY KEY,
-  city_name      VARCHAR(128) UNIQUE,
-  city_latitude  decimal(10, 8),
-  city_longitude decimal(10, 8)
+  city_name      VARCHAR(256) UNIQUE,
+  city_latitude  DECIMAL(10, 8),
+  city_longitude DECIMAL(10, 8)
+);
+
+DROP TABLE IF EXISTS tasks;
+CREATE TABLE tasks
+(
+  task_id           INT AUTO_INCREMENT PRIMARY KEY,
+  task_created_at   DATETIME,
+  task_name         VARCHAR(256),
+  task_description  VARCHAR(256),
+  task_category_id  INT,
+  task_files        VARCHAR(256),
+  task_city_id      INT,
+  task_budget       DECIMAL(10, 2),
+  task_deadline     DATETIME,
+  task_address      VARCHAR(256),
+  task_review       VARCHAR(256),
+  task_status       VARCHAR(256),
+  task_performer_id INT,
+  task_author_id    INT,
+  FOREIGN KEY (task_category_id) REFERENCES orders_categories (category_id),
+  FOREIGN KEY (task_city_id) REFERENCES cities (city_id),
+  FOREIGN KEY (task_performer_id) REFERENCES users (user_id),
+  FOREIGN KEY (task_author_id) REFERENCES users (user_id)
 );
