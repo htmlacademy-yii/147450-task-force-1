@@ -46,6 +46,16 @@ CREATE TABLE cities
   city_longitude DECIMAL(10, 8)
 );
 
+DROP TABLE IF EXISTS messages;
+CREATE TABLE messages
+(
+  message_id         INT AUTO_INCREMENT PRIMARY KEY,
+  message_created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  message_notice     VARCHAR(512),
+  message_task_id    INT,
+  FOREIGN KEY (message_task_id) REFERENCES tasks (task_id)
+);
+
 DROP TABLE IF EXISTS tasks;
 CREATE TABLE tasks
 (
@@ -63,8 +73,10 @@ CREATE TABLE tasks
   task_status       VARCHAR(256),
   task_performer_id INT,
   task_author_id    INT,
+  task_message_id   INT,
   FOREIGN KEY (task_category_id) REFERENCES orders_categories (category_id),
   FOREIGN KEY (task_city_id) REFERENCES cities (city_id),
   FOREIGN KEY (task_performer_id) REFERENCES users (user_id),
-  FOREIGN KEY (task_author_id) REFERENCES users (user_id)
+  FOREIGN KEY (task_author_id) REFERENCES users (user_id),
+  FOREIGN KEY (task_message_id) REFERENCES messages (message_id)
 );
