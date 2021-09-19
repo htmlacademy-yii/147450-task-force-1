@@ -7,7 +7,7 @@ CREATE TABLE users
   user_created_at DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-DROP TABLE IF EXISTS profiles;
+DROP TABLE IF EXISTS profiles cascade ;
 CREATE TABLE profiles
 (
   profile_id                 INT PRIMARY KEY AUTO_INCREMENT,
@@ -46,17 +46,8 @@ CREATE TABLE cities
   city_longitude DECIMAL(10, 8)
 );
 
-DROP TABLE IF EXISTS messages;
-CREATE TABLE messages
-(
-  message_id         INT AUTO_INCREMENT PRIMARY KEY,
-  message_created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  message_notice     VARCHAR(512),
-  message_task_id    INT,
-  FOREIGN KEY (message_task_id) REFERENCES tasks (task_id)
-);
 
-DROP TABLE IF EXISTS tasks;
+DROP TABLE IF EXISTS tasks cascade;
 CREATE TABLE tasks
 (
   task_id           INT AUTO_INCREMENT PRIMARY KEY,
@@ -77,6 +68,19 @@ CREATE TABLE tasks
   FOREIGN KEY (task_category_id) REFERENCES orders_categories (category_id),
   FOREIGN KEY (task_city_id) REFERENCES cities (city_id),
   FOREIGN KEY (task_performer_id) REFERENCES users (user_id),
-  FOREIGN KEY (task_author_id) REFERENCES users (user_id),
-  FOREIGN KEY (task_message_id) REFERENCES messages (message_id)
+  FOREIGN KEY (task_author_id) REFERENCES users (user_id)
+
 );
+
+DROP TABLE IF EXISTS messages cascade;
+CREATE TABLE messages
+(
+  message_id         INT AUTO_INCREMENT PRIMARY KEY,
+  message_created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  message_notice     VARCHAR(512),
+  message_task_id    INT,
+  FOREIGN KEY (message_task_id) REFERENCES tasks (task_id)
+);
+
+ALTER TABLE tasks
+ADD FOREIGN KEY (task_message_id) REFERENCES messages(message_id);
