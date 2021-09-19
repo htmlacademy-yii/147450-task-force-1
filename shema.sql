@@ -15,6 +15,7 @@ CREATE TABLE profiles
   user_address               VARCHAR(256),
   user_description           VARCHAR(256),
   user_birthdate             DATE,
+  user_categories            INT,
   user_works_photo           VARCHAR(256),
   user_phone                 VARCHAR(256) UNIQUE,
   user_skype                 VARCHAR(256) UNIQUE,
