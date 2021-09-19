@@ -19,6 +19,11 @@ CREATE TABLE profiles
   user_phone       VARCHAR(256) UNIQUE,
   user_skype       VARCHAR(256) UNIQUE,
   user_telegram    VARCHAR(256) UNIQUE,
+  notification_new_message BOOL,
+  notification_user_action BOOL,
+  notification_new_review BOOL,
+  notification_show_contact BOOL,
+  notification_show_profile BOOL,
   FOREIGN KEY (profile_id) REFERENCES users (user_id)
 );
 
