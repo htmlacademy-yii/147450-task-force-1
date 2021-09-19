@@ -7,7 +7,7 @@ CREATE TABLE users
   user_created_at DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-DROP TABLE IF EXISTS profiles cascade ;
+DROP TABLE IF EXISTS profiles cascade;
 CREATE TABLE profiles
 (
   profile_id                 INT PRIMARY KEY AUTO_INCREMENT,
@@ -65,11 +65,11 @@ CREATE TABLE tasks
   task_performer_id INT,
   task_author_id    INT,
   task_message_id   INT,
+  task_feedback_id  INT,
   FOREIGN KEY (task_category_id) REFERENCES orders_categories (category_id),
   FOREIGN KEY (task_city_id) REFERENCES cities (city_id),
   FOREIGN KEY (task_performer_id) REFERENCES users (user_id),
   FOREIGN KEY (task_author_id) REFERENCES users (user_id)
-
 );
 
 DROP TABLE IF EXISTS messages cascade;
@@ -82,6 +82,17 @@ CREATE TABLE messages
   FOREIGN KEY (message_task_id) REFERENCES tasks (task_id)
 );
 
+DROP TABLE IF EXISTS feedbacks cascade;
+CREATE TABLE feedbacks
+(
+  feedback_id         INT AUTO_INCREMENT PRIMARY KEY,
+  feedback_created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  feedback_notice     VARCHAR(512),
+  feedback_task_id    INT,
+  FOREIGN KEY (feedback_task_id) REFERENCES tasks (task_id)
+);
 
 ALTER TABLE tasks
-ADD FOREIGN KEY (task_message_id) REFERENCES messages(message_id);
+  ADD FOREIGN KEY (task_message_id) REFERENCES messages (message_id);
+ALTER TABLE tasks
+  ADD FOREIGN KEY (task_feedback_id) REFERENCES feedbacks (feedback_id);
