@@ -64,7 +64,7 @@ class TaskState
     {
         $this->agentId = $agentId;
         $this->customerId = $customerId;
-        $this->$currentStatus = $currentStatus;
+        $this->currentStatus = $currentStatus;
     }
 
 
