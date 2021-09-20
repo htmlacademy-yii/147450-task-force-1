@@ -1,16 +1,10 @@
 DROP TABLE IF EXISTS users;
 CREATE TABLE users
 (
-  user_id         INT PRIMARY KEY AUTO_INCREMENT,
-  user_name       VARCHAR(256) NOT NULL UNIQUE,
-  user_email      VARCHAR(256) NOT NULL UNIQUE,
-  user_created_at DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-
-DROP TABLE IF EXISTS profiles cascade;
-CREATE TABLE profiles
-(
-  profile_id                 INT PRIMARY KEY AUTO_INCREMENT,
+  user_id                    INT PRIMARY KEY AUTO_INCREMENT,
+  user_created_at            DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  user_name                  VARCHAR(256) NOT NULL UNIQUE,
+  user_email                 VARCHAR(256) NOT NULL UNIQUE,
   user_avatar                VARCHAR(256),
   user_address               VARCHAR(256),
   user_description           VARCHAR(256),
@@ -24,9 +18,9 @@ CREATE TABLE profiles
   notification_user_action   BOOL,
   notification_new_review    BOOL,
   customization_show_contact BOOL,
-  customization_show_profile BOOL,
-  FOREIGN KEY (profile_id) REFERENCES users (user_id)
+  customization_show_profile BOOL
 );
+
 
 DROP TABLE IF EXISTS orders_categories;
 CREATE TABLE orders_categories
